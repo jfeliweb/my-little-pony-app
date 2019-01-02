@@ -1,8 +1,8 @@
 FROM node:latest
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-COPY package.json /usr/src/app/
+WORKDIR /app
+COPY package.json package.json
 RUN npm install
-COPY . /usr/src/app
+COPY . .
 EXPOSE 3000
-CMD [ "npm", "start" ]
+RUN npm install -g nodemon
+CMD [ "nodemon", "app.js"]
