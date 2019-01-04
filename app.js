@@ -32,23 +32,9 @@ var ponySchema = new mongoose.Schema({
 
 var Pony = mongoose.model("Pony", ponySchema);
 
-// Pony.create({
-// 	name: "Pinkie Pie",
-// 	color: "Pink",
-// 	image: "https://vignette.wikia.nocookie.net/deathbattlefanon/images/d/db/440px-Canterlot_Castle_Pinkie_Pie_1.png",
-// 	description: "This is just a test"
-// }, function(err, ponies){
-// 	if(err){
-// 		console.log(err);
-// 	} else {
-// 		console.log("Here is the pony " + ponies.name + ".");
-// 		console.log(ponies);
-// 	}
-// });
-
 // RESTFUL Routes
 app.get("/", function(req, res){
-	res.send("Just Seeing If I Can See You!");
+	res.redirect("/ponies");
 });
 
 // Index Route
@@ -75,7 +61,16 @@ app.post("/ponies", function(req, res){
 		}
 	});
 });
-
+// Show Route
+app.get("/ponies/:id", function (req, res) { 
+	Pony.findById(req.params.id, function (err, foundPony) { 
+		if(err){
+			console.log(err);
+		} else {
+			res.render("show", {ponys: foundPony});
+		}
+	 });
+ });
 
 //Tell Express to listen for requests (start server)
 app.listen(3000, function() {

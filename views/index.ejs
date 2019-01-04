@@ -1,8 +1,8 @@
 <h1>Testing index Page</h1>
 
 <% ponys.forEach(function(pony){ %>
-    <p><%= pony.name %></p>
+    <p><a href="/ponies/<%= pony._id%>"><%= pony.name %></a></p>
     <p><%= pony.color %></p>
-    <img src="<%= pony.image %>" alt="<%= pony.name %>">
+    <img src="<%= pony.image %>" alt="<%= pony.name %>" width="300px" height="400px">
     <p><%= pony.description %></p>
 <% }); %>
