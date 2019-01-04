@@ -6,12 +6,14 @@ var express = require("express"),
 	expressSanitizer = require("express-sanitizer");
 
 // APP CONFIG
-mongoose.connect('mongodb://mongo:27017/my_little_pony_app', { useNewUrlParser: true }).then(function(){
-    //connected successfully
-    console.log('Successfully connected to database');
-}, function(err) {
-    //err handle
-    console.log('Not connected to database ' + err);
+mongoose.connect('mongodb://mongo:27017/my_little_pony_app', {
+	useNewUrlParser: true
+}).then(function () {
+	//connected successfully
+	console.log('Successfully connected to database');
+}, function (err) {
+	//err handle
+	console.log('Not connected to database ' + err);
 });
 
 app.use(bodyParser.urlencoded({
@@ -33,28 +35,30 @@ var ponySchema = new mongoose.Schema({
 var Pony = mongoose.model("Pony", ponySchema);
 
 // RESTFUL Routes
-app.get("/", function(req, res){
+app.get("/", function (req, res) {
 	res.redirect("/ponies");
 });
 
 // Index Route
-app.get("/ponies", function(req, res){
-	Pony.find({}, function(err, allPonys){
-		if(err){
+app.get("/ponies", function (req, res) {
+	Pony.find({}, function (err, allPonys) {
+		if (err) {
 			console.log(err);
 		} else {
-			res.render("index", {ponys: allPonys});
+			res.render("index", {
+				ponys: allPonys
+			});
 		}
 	});
 });
 // New Route
-app.get("/ponies/new", function(req, res){
+app.get("/ponies/new", function (req, res) {
 	res.render("new");
 });
 // Create Route
-app.post("/ponies", function(req, res){
-	Pony.create(req.body.ponies, function(err, newPony){
-		if(err){
+app.post("/ponies", function (req, res) {
+	Pony.create(req.body.ponies, function (err, newPony) {
+		if (err) {
 			console.log(err);
 		} else {
 			res.redirect("/ponies");
@@ -62,17 +66,19 @@ app.post("/ponies", function(req, res){
 	});
 });
 // Show Route
-app.get("/ponies/:id", function (req, res) { 
-	Pony.findById(req.params.id, function (err, foundPony) { 
-		if(err){
+app.get("/ponies/:id", function (req, res) {
+	Pony.findById(req.params.id, function (err, foundPony) {
+		if (err) {
 			console.log(err);
 		} else {
-			res.render("show", {ponys: foundPony});
+			res.render("show", {
+				ponys: foundPony
+			});
 		}
-	 });
- });
+	});
+});
 
 //Tell Express to listen for requests (start server)
-app.listen(3000, function() {
+app.listen(3000, function () {
 	console.log("Server has Started!!!");
 });
