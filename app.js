@@ -57,7 +57,7 @@ app.get("/ponies/new", function (req, res) {
 });
 // Create Route
 app.post("/ponies", function (req, res) {
-	Pony.create(req.body.ponies, function (err, newPony) {
+	Pony.create(req.body.ponys, function (err, newPony) {
 		if (err) {
 			console.log(err);
 		} else {
@@ -74,6 +74,38 @@ app.get("/ponies/:id", function (req, res) {
 			res.render("show", {
 				ponys: foundPony
 			});
+		}
+	});
+});
+// Edit Route
+app.get("/ponies/:id/edit", function (req, res) {
+	Pony.findById(req.params.id, function (err, foundPony) {
+		if (err) {
+			console.log(err);
+		} else {
+			res.render("edit", {
+				ponys: foundPony
+			});
+		}
+	});
+});
+// Update Route
+app.put("/ponies/:id", function (req, res) {
+	Pony.findByIdAndUpdate(req.params.id, req.body.ponys, function (err, updatePony) {
+		if (err) {
+			console.log(err);
+		} else {
+			res.redirect("/ponies/" + req.params.id);
+		}
+	});
+});
+// Delete Route
+app.delete("/ponies/:id", function (req, res) {
+	Pony.findByIdAndRemove(req.params.id, function (err) {
+		if (err) {
+			console.log(err);
+		} else {
+			res.redirect("/ponies");
 		}
 	});
 });

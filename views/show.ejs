@@ -1,1 +1,10 @@
 <h1>This is the pony details page of <%= ponys.name %></h1>
+<p><%= ponys.color %></p>
+<img src="<%= ponys.image %>" width="200px" height="250px">
+<p><%- ponys.description %></p>
+
+<p>Edit: <a href="/ponies/<%=ponys._id%>/edit"><%= ponys.name %></a></p>
+
+<form id="delete" method="POST" action="/ponies/<%= ponys._id %>?_method=DELETE">
+    <button class="negative ui button">Delete Blog Post</button>
+</form>

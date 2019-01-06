@@ -1,0 +1,9 @@
+<h1>Edit Pony</h1>
+
+<form action="/ponies/<%= ponys._id %>?_method=PUT" method="POST">
+    <input type="text" name="ponys[name]" value="<%=ponys.name%>">
+    <input type="text" name="ponys[color]" value="<%=ponys.color%>">
+    <input type="text" name="ponys[image]" value="<%=ponys.image%>">
+    <textarea name="ponys[description]"><%=ponys.description%></textarea>
+    <button>Submit Edit</button>
+</form>
