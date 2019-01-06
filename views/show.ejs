@@ -1,3 +1,5 @@
+<% include partials/header %>
+
 <h1>This is the pony details page of <%= ponys.name %></h1>
 <p><%= ponys.color %></p>
 <img src="<%= ponys.image %>" width="200px" height="250px">
@@ -8,3 +10,5 @@
 <form id="delete" method="POST" action="/ponies/<%= ponys._id %>?_method=DELETE">
     <button class="negative ui button">Delete Blog Post</button>
 </form>
+
+<% include partials/footer %>

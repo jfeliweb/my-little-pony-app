@@ -1,3 +1,5 @@
+<% include partials/header %>
+
 <h1>Edit Pony</h1>
 
 <form action="/ponies/<%= ponys._id %>?_method=PUT" method="POST">
@@ -7,3 +9,5 @@
     <textarea name="ponys[description]"><%=ponys.description%></textarea>
     <button>Submit Edit</button>
 </form>
+
+<% include partials/footer %>
