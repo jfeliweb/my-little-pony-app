@@ -1,13 +1,48 @@
 <% include partials/header %>
 
-<h1>Edit Pony</h1>
+<h3>Edit Pony</h3>
 
-<form action="/ponies/<%= ponys._id %>?_method=PUT" method="POST">
-    <input type="text" name="ponys[name]" value="<%=ponys.name%>">
-    <input type="text" name="ponys[color]" value="<%=ponys.color%>">
-    <input type="text" name="ponys[image]" value="<%=ponys.image%>">
-    <textarea name="ponys[description]"><%=ponys.description%></textarea>
-    <button>Submit Edit</button>
-</form>
+<div class="container">
+    <div class="row">
+        <form class="col s12" action="/ponies/<%= ponys._id %>?_method=PUT" method="POST">
+
+            <div class="row">
+                <div class="input-field">
+                    <input placeholder="Pinkie Pie" id="name_pony" type="text" name="ponys[name]" value="<%=ponys.name%>">
+                    <label for="name_pony">Name of Pony</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field">
+                    <input placeholder="Pink" id="color_pony" type="text" name="ponys[color]" value="<%=ponys.color%>">
+                    <label for="color_pony">Color of Pony</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field">
+                    <input placeholder="http://..." id="pony_image" type="text" name="ponys[image]" value="<%=ponys.image%>">
+                    <label for="pony_image">Link to image of Pony</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field">
+                    <textarea id="pony_description" name="ponys[description]" placeholder="Just a little information" class="materialize-textarea validate" >
+                        <%=ponys.description%>
+                    </textarea>
+                    <label for="pony_description">Description of Pony</label>
+                </div>
+            </div>
+
+            <button class="btn waves-effect waves-light" type="submit" name="action">Update Pony
+                <i class="material-icons right">send</i>
+            </button>
+
+        </form>
+        
+    </div><!-- end row -->
+</div><!-- end container -->
 
 <% include partials/footer %>
