@@ -2,12 +2,45 @@
 
 <h1>Add New Pony</h1>
 
-<form method="POST" action="/ponies">
-    <input type="text" name="ponies[name]" placeholder="Name of pony">
-    <input type="text" name="ponies[color]" placeholder="Color of pony">
-    <input type="text" name="ponies[image]" placeholder="Link to Image of pony">
-    <textarea name="ponies[description]"></textarea>
-    <button>Submit</button>
-</form>
+<div class="container">
+    <div class="row">
+        <form class="col s12" method="POST" action="/ponies">
+
+            <div class="row">
+                <div class="input-field">
+                    <input placeholder="Pinkie Pie" id="name_pony" type="text" name="ponys[name]">
+                    <label for="name_pony">Name of Pony</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field">
+                    <input placeholder="Pink" id="color_pony" type="text" name="ponys[color]">
+                    <label for="color_pony">Color of Pony</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field">
+                    <input placeholder="http://..." id="pony_image" type="text" name="ponys[image]">
+                    <label for="pony_image">Link to image of Pony</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field">
+                    <textarea id="pony_description" name="ponys[description]" placeholder="Just a little information" class="materialize-textarea validate"></textarea>
+                    <label for="pony_description">Description of Pony</label>
+                </div>
+            </div>
+
+            <button class="btn waves-effect waves-light" type="submit" name="action">Add Pony
+                <i class="material-icons right">send</i>
+            </button>
+
+        </form>
+        
+    </div><!-- end row -->
+</div><!-- end container -->
 
 <% include partials/footer %>
