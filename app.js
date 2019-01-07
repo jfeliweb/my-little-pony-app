@@ -57,6 +57,7 @@ app.get("/ponies/new", function (req, res) {
 });
 // Create Route
 app.post("/ponies", function (req, res) {
+	req.body.ponys.body = req.sanitize(req.ponys.blog.body);
 	Pony.create(req.body.ponys, function (err, newPony) {
 		if (err) {
 			console.log(err);
@@ -91,6 +92,7 @@ app.get("/ponies/:id/edit", function (req, res) {
 });
 // Update Route
 app.put("/ponies/:id", function (req, res) {
+	req.body.ponys.body = req.sanitize(req.ponys.blog.body);
 	Pony.findByIdAndUpdate(req.params.id, req.body.ponys, function (err, updatePony) {
 		if (err) {
 			console.log(err);
